@@ -1,0 +1,108 @@
+/* Layout: the deck, unrolled. White page, vertical brand name pinned at the left of each project, hairline rules, title compositions as full-width chapter openers. Single light look, as in the portfolio. */
+:root{
+  --paper:#ffffff;
+  --ink:#141412;
+  --soft:#55524d;
+  --rule:#b9b6b0;
+  --cream:#f6f2e7;
+  --wine:#7a1b29;
+  --serif:"Bodoni Moda","Bodoni 72","Didot","Bodoni MT","Playfair Display",Georgia,serif;
+  --gutter:clamp(16px,4.5vw,60px);
+  --rail:clamp(64px,7vw,104px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.5;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{margin:0}
+:root:not([data-lang="en"]) .t-en{display:none}
+:root[data-lang="en"] .t-fr{display:none}
+.wrap{max-width:1320px;margin-inline:auto;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:8px 14px;z-index:30}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--rule)}
+.topin{display:flex;align-items:center;gap:clamp(14px,3vw,36px);padding-block:10px}
+.brand{margin-right:auto;flex:none}
+.brand img{height:44px;width:auto}
+.top nav{display:flex;gap:clamp(12px,2.4vw,30px);flex-wrap:wrap}
+.top nav a{text-decoration:none;font-size:1.02rem}
+.top nav a:hover,.lang button:hover{color:var(--wine)}
+.lang{display:flex;align-items:center;gap:5px;font-size:.95rem}
+.lang button{font:inherit;color:var(--soft);background:none;border:0;padding:4px 2px;cursor:pointer}
+.lang button[aria-pressed="true"]{color:var(--ink);font-weight:700;border-bottom:1px solid var(--ink)}
+
+/* hero + about */
+.hero{padding-block:clamp(28px,5vw,64px) clamp(20px,4vw,48px)}
+.hero h1{margin:0}
+.hero img{margin-inline:auto;width:min(100%,560px)}
+.about{padding-block:clamp(40px,7vw,110px)}
+.aboutmark{width:clamp(150px,19vw,250px)}
+.abouttext{margin-left:clamp(0px,7.5vw,100px);max-width:50em;font-size:clamp(1.08rem,1.55vw,1.42rem);line-height:1.45;letter-spacing:.012em}
+.abouttext p+p{margin-top:1.4em}
+
+/* chapters */
+.chtitle{padding-block:clamp(56px,9vw,130px)}
+.chtitle.cream{background:var(--cream)}
+.chtitle h2{margin:0}
+.chtitle h2 img{margin-inline:auto;width:min(100%,820px);max-height:62vh;object-fit:contain}
+.chtitle.cream h2 img{width:min(100%,640px)}
+.chsub{text-align:center;margin-top:clamp(18px,2.5vw,30px);color:var(--soft);font-size:1.02rem;letter-spacing:.03em}
+.chsub:not(:has(.t-fr)){} 
+:root:not([data-lang="en"]) .chsub:not(:has(.t-fr)),:root[data-lang="en"] .chsub:not(:has(.t-en)){display:none}
+.projects{display:flex;flex-direction:column;gap:clamp(64px,9vw,140px);padding-bottom:clamp(64px,9vw,140px)}
+.chtitle.cream+.projects{padding-top:clamp(56px,8vw,110px)}
+
+/* project */
+.project{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:clamp(16px,2.5vw,40px)}
+.pname{margin:0;font-weight:400;font-size:clamp(2.3rem,4.3vw,3.9rem);line-height:.95;letter-spacing:-.03em;writing-mode:vertical-rl;transform:rotate(180deg);align-self:start;justify-self:start;position:sticky;top:92px;white-space:nowrap;text-align:right;max-height:calc(100vh - 110px)}
+.pname,.ctitle{font-variation-settings:"opsz" 34}
+.pbody{display:flex;flex-direction:column;gap:clamp(18px,2.6vw,36px);min-width:0}
+.shot{margin:0}
+.shot img{max-height:92vh;width:auto}
+.pinfo{display:flex;flex-wrap:wrap;gap:6px clamp(28px,5vw,72px);padding-top:14px;border-top:1px solid var(--rule);font-size:clamp(1rem,1.25vw,1.14rem);line-height:1.4;letter-spacing:.012em}
+.pmeta{min-width:0}
+.pcaps{font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.pinfo .b{font-weight:700}
+.phead{margin-top:1.2em}
+.pserv{list-style:none;margin:0;padding:0;columns:2 15em;column-gap:clamp(24px,4vw,56px);flex:1 1 20em;min-width:0;align-self:end}
+.pserv.one{columns:1;max-width:30em}
+.pserv li{break-inside:avoid;padding-left:.75em;text-indent:-.75em}
+.pserv li::before{content:"· ";font-weight:700}
+
+/* contact */
+.contact{border-top:1px solid var(--rule);padding-block:clamp(56px,8vw,120px)}
+.contactin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,80px);align-items:start}
+.ctitle{margin:0;font-weight:400;font-size:clamp(3rem,8vw,6.5rem);line-height:.9;letter-spacing:-.035em}
+form{display:flex;flex-direction:column;gap:26px;min-width:0}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-weight:700;font-size:.98rem;letter-spacing:.02em}
+.field input,.field textarea{font:inherit;font-size:1.1rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:8px 0;width:100%;resize:vertical}
+.field input:focus-visible,.field textarea:focus-visible{outline:0;border-bottom:2px solid var(--wine);padding-bottom:7px}
+.field .err{color:var(--wine);font-size:.92rem}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.formend{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+#cf-send{font:inherit;font-size:1.05rem;letter-spacing:.03em;color:var(--paper);background:var(--ink);border:1px solid var(--ink);border-radius:0;padding:12px 34px;cursor:pointer}
+#cf-send:hover{background:var(--wine);border-color:var(--wine)}
+#cf-send[disabled]{opacity:.5;cursor:default}
+#cf-status{flex:1 1 14em;min-width:0;font-size:1rem}
+#cf-status.bad{color:var(--wine)}
+
+.foot{padding-block:clamp(40px,7vw,100px) clamp(48px,8vw,110px)}
+.foot img{margin-left:auto;width:clamp(150px,22vw,300px)}
+
+@media (max-width:760px){
+  html{scroll-padding-top:120px}
+  .topin{flex-wrap:wrap;row-gap:4px}
+  .brand img{height:36px}
+  .top nav{order:3;width:100%;justify-content:space-between}
+  .project{display:block}
+  .pname{display:block;width:100%;justify-self:stretch;writing-mode:horizontal-tb;transform:none;position:static;white-space:normal;text-align:right;max-height:none;font-size:clamp(2rem,9vw,2.8rem);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--rule)}
+  .contactin{grid-template-columns:minmax(0,1fr)}
+  .shot img{max-height:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
